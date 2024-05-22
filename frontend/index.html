@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <title>webOS-PPPwn</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <script src="webOSTVjs-1.2.10/webOSTV.js" charset="utf-8"></script>
+	  <script src="webOSTVjs-1.2.10/webOSTV-dev.js" charset="utf-8"></script>
+    <script src="js/index.js"></script>
   </head>
-  <body>
+  <body onload="Init();">
     <div class='logo-container'>
       <span class="green">
                         $$\        $$$$$$\   $$$$$$\         $$$$$$$\  $$$$$$$\  $$$$$$$\                          
@@ -18,12 +21,12 @@ $$ | $$ | $$ |$$   ____|$$ |  $$ |$$ |  $$ |$$\   $$ |       $$ |      $$ |     
  \_____\____/  \_______|\_______/  \______/  \______/        \__|      \__|      \__|       \_____\____/ \__|  \__|
       </span><div>
 Designed for LG webOS TVs! Ported by <span class="purple">Kodeine</span> & <span class="purple">Contributors</span>, with <span class="red">luv &lt;3</span>
-Version: v1.2 (by <span class="blue">FabulosoDev</span>)
+Version: v<span id="appVersion">0.0.0</span> (by <span class="blue">FabulosoDev</span>)
       </div>
     </div>
     <div class="button-container">
-      <button id="installButton">Install PPLGPwn</button>
-      <button id="runButton">Run PPLGPwn</button>
+      <button id="installButton">Install PPPwn</button>
+      <button id="runButton">Run PPPwn</button>
       <button id="clearButton">Clear Log</button>
     </div>
     <div class="terminal-container">
