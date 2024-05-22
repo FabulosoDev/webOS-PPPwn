@@ -29,7 +29,7 @@ function Init() {
 
         webOS.service.request("luna://com.webos.notification", {
 	    method: "createToast",
-	    parameters: {"sourceId":"webosbrew","message": "<b>PPLGPwn</b><br/>Starting your Jailbreak."}',
+	    parameters: {"sourceId":"webosbrew", "message": "<b>PPLGPwn</b><br/>Starting your Jailbreak."}
 	});
 	    
         webOS.service.request("luna://org.webosbrew.hbchannel.service", {
