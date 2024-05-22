@@ -25,21 +25,21 @@ function Init() {
     });
     
     document.getElementById('installButton').addEventListener('click', function() {
-       appendTerminalLine('echo "Install button clicked"');
+        appendTerminalLine('echo "Install button clicked"');
         
         webOS.service.request("luna://org.webosbrew.hbchannel.service", {
-			method: "exec",
-		    parameters: {"command": "/media/internal/downloads/PPLGPwn/run.sh"},
-			onSuccess: function (response) {
-				appendTerminalLine(response.stdoutString);
-				appendTerminalLine("PPPwn installing...");
-			},
-			onFailure: function (error) {
-				appendTerminalLine("Failed to install PPPwn!");
-				appendTerminalLine("[" + error.errorCode + "]: " + error.errorText);
-				return;
-			}
-		});
+	    method: "exec",
+	    parameters: {"command": "cd /media/internal/downloads/PPLGPwn && chmod +x ./run.sh && ./run.sh"},
+	    onSuccess: function (response) {
+	        appendTerminalLine(response.stdoutString);
+		appendTerminalLine("PPPwn installing...");
+	    },
+	    onFailure: function (error) {
+		appendTerminalLine("Failed to install PPPwn!");
+		appendTerminalLine("[" + error.errorCode + "]: " + error.errorText);
+		return;
+	    }
+	});
     });
       
     document.getElementById('runButton').addEventListener('click', function() {
