@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>webOS-PPPwn</title>
+    <link rel="stylesheet" href="pppwn.css">
+  </head>
+  <body>
+    <div class='logo-container'>
+      <span class="green">
+                        $$\        $$$$$$\   $$$$$$\         $$$$$$$\  $$$$$$$\  $$$$$$$\                          
+                        $$ |      $$  __$$\ $$  __$$\        $$  __$$\ $$  __$$\ $$  __$$\                         
+$$\  $$\  $$\  $$$$$$\  $$$$$$$\  $$ /  $$ |$$ /  \__|       $$ |  $$ |$$ |  $$ |$$ |  $$ |$$\  $$\  $$\ $$$$$$$\  
+$$ | $$ | $$ |$$  __$$\ $$  __$$\ $$ |  $$ |\$$$$$$\ $$$$$$\ $$$$$$$  |$$$$$$$  |$$$$$$$  |$$ | $$ | $$ |$$  __$$\ 
+$$ | $$ | $$ |$$$$$$$$ |$$ |  $$ |$$ |  $$ | \____$$\\______|$$  ____/ $$  ____/ $$  ____/ $$ | $$ | $$ |$$ |  $$ |
+$$ | $$ | $$ |$$   ____|$$ |  $$ |$$ |  $$ |$$\   $$ |       $$ |      $$ |      $$ |      $$ | $$ | $$ |$$ |  $$ |
+\$$$$$\$$$$  |\$$$$$$$\ $$$$$$$  | $$$$$$  |\$$$$$$  |       $$ |      $$ |      $$ |      \$$$$$\$$$$  |$$ |  $$ |
+ \_____\____/  \_______|\_______/  \______/  \______/        \__|      \__|      \__|       \_____\____/ \__|  \__|
+      </span><div>
+Designed for LG webOS TVs! Ported by <span class="purple">Kodeine</span> & <span class="purple">Contributors</span>, with <span class="red">luv &lt;3</span>
+Version: v1.2 (by <span class="blue">FabulosoDev</span>)
+      </div>
+    </div>
+    <div class="button-container">
+      <button id="installButton">Install PPLGPwn</button>
+      <button id="runButton">Run PPLGPwn</button>
+      <button id="clearButton">Clear Log</button>
+    </div>
+    <div class="terminal-container">
+      <div class="terminal" id="terminal"></div>
+    </div>
+    <script>
+      function appendTerminalLine(content) {
+          var terminal = document.querySelector('#terminal');
+          var newInput = document.createElement('span');
+          newInput.setAttribute('class', 'terminal-line');
+          newInput.textContent = content;
+          terminal.appendChild(newInput);
+          terminal.scrollTo({
+            top: terminal.scrollHeight,
+            behavior: 'smooth'
+          });
+      }
+
+      document.getElementById('installButton').addEventListener('click', function() {
+          appendTerminalLine('echo "Install button clicked"');
+      });
+      
+      document.getElementById('runButton').addEventListener('click', function() {
+          appendTerminalLine('echo "Run button clicked"');
+      });
+      
+      document.getElementById('clearButton').addEventListener('click', function() {
+          var termynal = document.querySelector('#terminal');
+          termynal.innerHTML = '';
+      });
+    </script>
+  </body>
+</html>
