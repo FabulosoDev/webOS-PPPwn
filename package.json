@@ -13,7 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "FabulosoDev",
-  "license": "MPL-2.0",
+  "license": "None",
   "devDependencies": {
     "@webosose/ares-cli": "^2.4.0"
   }
