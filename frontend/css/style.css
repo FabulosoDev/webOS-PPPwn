@@ -1,0 +1,82 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    white-space: pre;
+    background-color: #1e1e1e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.green {
+    color: green
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+
+.purple {
+    color: purple;
+}
+
+.logo-container {
+    text-align: center;
+    outline: dashed 0px white;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    outline: dashed 0px white;
+}
+
+.button-container button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.button-container button:hover {
+    background-color: #555;
+}
+
+.terminal-container {
+    height: 60vh;
+    padding: 0px 30px;
+}
+
+.terminal {
+    height: 100%;
+    background: #000;
+    color: #eee;
+    font-size: 18px;
+    font-family: monospace;
+    border-radius: 8px;
+    padding: 10px 20px;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.terminal-line {
+    display: block;
+    line-height: 2;
+}
+
+.terminal-line:before {
+    content: '>';
+    margin-right: 0.75em;
+    color: #a2a2a2;
+    display: inline-block;
+    vertical-align: middle;
+}
