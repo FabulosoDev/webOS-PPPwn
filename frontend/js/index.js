@@ -3,7 +3,7 @@ webOS.deviceInfo(function (info) {
     deviceInfo = info;
 });
 
-function appendTerminalLine(content)
+function appendTerminalLine(content) {
     var terminal = document.querySelector('#terminal');
     var newInput = document.createElement('span');
     newInput.setAttribute('class', 'terminal-line');
