@@ -11,6 +11,6 @@
     "vendor": "FabulosoDev",
     "largeIcon": "assets/icon-130.png",
     "iconColor": "#000000",
-    "id": "dev.fabuloso.webos-pppwn",
+    "id": "dev.fabuloso.webospppwn",
     "disableBackHistoryAPI": true
 }
