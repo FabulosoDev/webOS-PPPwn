@@ -8,10 +8,9 @@
 	  <script src="webOSTVjs-1.2.10/webOSTV-dev.js" charset="utf-8"></script>
     <script src="js/index.js"></script>
   </head>
-  <body onload="Init();">
-    <div class='logo-container'>
-      <span class="green">
-                        $$\        $$$$$$\   $$$$$$\         $$$$$$$\  $$$$$$$\  $$$$$$$\                          
+  <body>
+    <div class="logo">
+                        $$\        $$$$$$\   $$$$$$\         $$$$$$$\  $$$$$$$\  $$$$$$$\       <span class="author">by FabulosoDev</span>     
                         $$ |      $$  __$$\ $$  __$$\        $$  __$$\ $$  __$$\ $$  __$$\                         
 $$\  $$\  $$\  $$$$$$\  $$$$$$$\  $$ /  $$ |$$ /  \__|       $$ |  $$ |$$ |  $$ |$$ |  $$ |$$\  $$\  $$\ $$$$$$$\  
 $$ | $$ | $$ |$$  __$$\ $$  __$$\ $$ |  $$ |\$$$$$$\ $$$$$$\ $$$$$$$  |$$$$$$$  |$$$$$$$  |$$ | $$ | $$ |$$  __$$\ 
@@ -19,18 +18,13 @@ $$ | $$ | $$ |$$$$$$$$ |$$ |  $$ |$$ |  $$ | \____$$\\______|$$  ____/ $$  ____/
 $$ | $$ | $$ |$$   ____|$$ |  $$ |$$ |  $$ |$$\   $$ |       $$ |      $$ |      $$ |      $$ | $$ | $$ |$$ |  $$ |
 \$$$$$\$$$$  |\$$$$$$$\ $$$$$$$  | $$$$$$  |\$$$$$$  |       $$ |      $$ |      $$ |      \$$$$$\$$$$  |$$ |  $$ |
  \_____\____/  \_______|\_______/  \______/  \______/        \__|      \__|      \__|       \_____\____/ \__|  \__|
-      </span><div>
-Designed for LG webOS TVs! Ported by <span class="purple">Kodeine</span> & <span class="purple">Contributors</span>, with <span class="red">luv &lt;3</span>
-Version: v<span id="appVersion">0.0.0</span> (by <span class="blue">FabulosoDev</span>)
-      </div>
     </div>
     <div class="button-container">
-      <button id="installButton">Install PPPwn</button>
-      <button id="runButton">Run PPPwn</button>
-      <button id="clearButton">Clear Log</button>
+      <button id="installButton" type="button" onclick="installPppwn()">Install PPPwn</button>
+      <button id="runButton" type="button" onclick="runPppwn()">Run PPPwn</button>
+      <button id="clearButton" type="button" onclick="clearLog()">Clear Log</button>
     </div>
-    <div class="terminal-container">
-      <div class="terminal" id="terminal"></div>
-    </div>
+    <div class="terminal" id="terminal"></div>
+    <div class="footer">Version <span id="version">0.0.0</span></div>
   </body>
 </html>

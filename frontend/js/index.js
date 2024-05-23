@@ -1,58 +1,72 @@
-var deviceInfo;
-webOS.deviceInfo(function (info) {
-    deviceInfo = info;
-});
-
-function appendTerminalLine(content) {
-    var terminal = document.querySelector('#terminal');
-    var newInput = document.createElement('span');
-    newInput.setAttribute('class', 'terminal-line');
-    newInput.textContent = content;
-    terminal.appendChild(newInput);
-    terminal.scrollTo({
-        top: terminal.scrollHeight,
-        behavior: 'smooth'
-    });
-}
-
-function Init() {
-    webOS.fetchAppInfo(function (info) {
-        if (info) {
-            document.getElementById("appVersion").innerHTML = info.version;
+function terminalLog(content) {
+    function addChild(line) {
+        var terminal = document.querySelector('#terminal');
+        var newInput = document.createElement('span');
+        newInput.setAttribute('class', 'terminal-line');
+        newInput.textContent = line;
+        if (line.slice(-1) == '\n' || !terminal.lastChild) {
+            terminal.appendChild(newInput);
         } else {
-            console.error('Error occurs while getting appinfo.json.');
+            terminal.replaceChild(newInput, terminal.lastChild);
         }
-    });
+        terminal.scrollTo({
+            top: terminal.scrollHeight,
+            behavior: 'smooth'
+        });
+    }    
     
-    document.getElementById('installButton').addEventListener('click', function() {
-        appendTerminalLine('echo "Install button clicked"');
+    var lf = content.indexOf("\n");
+    if (lf > -1 && lf < content.length -1) {
+        var lines = content.split("\n");
+        for (i = 0; i < lines.length; i++) {
+            if (!!lines[i]) {
+                addChild(lines[i] + "\n");
+            }
+        }
+    } else if (!!content) {
+        addChild(content);
+    }
+}
 
-        webOS.service.request("luna://com.webos.notification", {
-	    method: "createToast",
-	    parameters: {"sourceId":"webosbrew", "message": "<b>PPLGPwn</b><br/>Starting your Jailbreak."}
-	});
-	    
-        webOS.service.request("luna://org.webosbrew.hbchannel.service", {
-	    method: "exec",
-	    parameters: {"command": "cd /media/internal/downloads/PPLGPwn && chmod +x ./run.sh && ./run.sh"},
-	    onSuccess: function (response) {
-	        appendTerminalLine(response.stdoutString);
-		appendTerminalLine("PPPwn installing...");
-	    },
-	    onFailure: function (error) {
-		appendTerminalLine("Failed to install PPPwn!");
-		appendTerminalLine("[" + error.errorCode + "]: " + error.errorText);
-		return;
-	    }
-	});
-    });
-      
-    document.getElementById('runButton').addEventListener('click', function() {
-        appendTerminalLine('echo "Run button clicked"');
-    });
-      
-    document.getElementById('clearButton').addEventListener('click', function() {
-        var termynal = document.querySelector('#terminal');
-        termynal.innerHTML = '';
+function installPppwn() {
+    console.log('echo "Install button clicked"');
+    terminalLog('echo "Install button clicked"');
+}
+
+function runPppwn() {
+    terminalLog('Starting PPPwn...');
+    
+    webOS.service.request("luna://org.webosbrew.hbchannel.service", {
+        method: "spawn",
+        parameters: {"command": "cd /media/internal/downloads/PPLGPwn && chmod +x ./run.sh && ./run.sh"},
+        onSuccess: function (response) {
+            switch(response.event) {
+                case "stdoutData":
+                    response.stdoutString.split("\n").forEach(function (stdoutString) {
+                        terminalLog(stdoutString);
+                        console.log(stdoutString);
+                    });
+                    break;
+            }            
+        },
+        onFailure: function (error) {
+            terminalLog(error);
+            console.log(error);
+            return;
+        },
+        subscribe: true,
+        resubscribe: true
     });
 }
+
+function clearLog() {
+    document.querySelector('#terminal').innerHTML = '';
+}
+
+webOS.fetchAppInfo(function (info) {
+    if (info) {
+        document.getElementById("version").innerHTML = info.version;
+    } else {
+        console.error('Error occurs while getting appinfo.json.');
+    }
+});
