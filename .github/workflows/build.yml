@@ -47,8 +47,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: webos-pppwn
-          path: |
-            ${{github.workspace}}/build/*
+          path: ${{ github.workspace }}/build/*
 
       - name: Upload GitHub Release Artifacts
         uses: shogo82148/actions-upload-release-asset@v1
