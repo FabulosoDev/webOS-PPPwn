@@ -14,8 +14,7 @@ function terminalLog(content) {
         //    behavior: 'smooth'
         //});
     }
-    addChild(content);
-    /*
+    //addChild(content);
     var lf = content.indexOf("\n");
     if (lf > -1 && lf < content.length -1) {
         var lines = content.split("\n");
@@ -27,7 +26,6 @@ function terminalLog(content) {
     } else if (!!content) {
         addChild(content);
     }
-    */
 }
 
 function installPppwn() {
@@ -36,7 +34,7 @@ function installPppwn() {
 }
 
 function runPppwn() {
-    //terminalLog('Starting PPPwn...\n');
+    terminalLog('Starting PPPwn...\n');
     
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
