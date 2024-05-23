@@ -13,8 +13,9 @@ function terminalLog(content) {
             top: terminal.scrollHeight,
             behavior: 'smooth'
         });
-    }    
-    
+    }
+    addChild(content);
+    /*
     var lf = content.indexOf("\n");
     if (lf > -1 && lf < content.length -1) {
         var lines = content.split("\n");
@@ -26,6 +27,7 @@ function terminalLog(content) {
     } else if (!!content) {
         addChild(content);
     }
+    */
 }
 
 function installPppwn() {
