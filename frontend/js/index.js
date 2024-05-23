@@ -34,8 +34,6 @@ function installPppwn() {
 }
 
 function runPppwn() {
-    terminalLog('Starting PPPwn...\n');
-    
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
         parameters: {"command": "cd /media/internal/downloads/PPLGPwn && chmod +x ./run.sh && ./run.sh"},
