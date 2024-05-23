@@ -9,10 +9,10 @@ function terminalLog(content) {
         } else {
             terminal.replaceChild(newInput, terminal.lastChild);
         }
-        terminal.scrollTo({
-            top: terminal.scrollHeight,
-            behavior: 'smooth'
-        });
+        //terminal.scrollTo({
+        //    top: terminal.scrollHeight,
+        //    behavior: 'smooth'
+        //});
     }
     addChild(content);
     /*
@@ -36,7 +36,7 @@ function installPppwn() {
 }
 
 function runPppwn() {
-    terminalLog('Starting PPPwn...');
+    //terminalLog('Starting PPPwn...\n');
     
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
