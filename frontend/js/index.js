@@ -42,10 +42,8 @@ function runPppwn() {
         onSuccess: function (response) {
             switch(response.event) {
                 case "stdoutData":
-                    response.stdoutString.split("\n").forEach(function (stdoutString) {
-                        terminalLog(stdoutString);
-                        console.log(stdoutString);
-                    });
+                    terminalLog(response.stdoutString);
+                    console.log(response.stdoutString);
                     break;
             }            
         },
