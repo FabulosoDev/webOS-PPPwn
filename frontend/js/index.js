@@ -25,15 +25,9 @@ function terminalLog(content) {
 }
 
 function installPppwn() {
-    var installCmd = 
-        `mkdir -p /media/internal/downloads/webOS-PPPwn &&
-         curl -fsSL -o /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 &&
-         curl -fsSL -o /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin
-         curl -fsSL -o /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin`;
-
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
-        parameters: {"command": installCmd},
+        parameters: {"command": "mkdir -p /media/internal/downloads/webOS-PPPwn && curl -L -o /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 && curl -L -o /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin && curl -L -o /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin"},
         onSuccess: function (response) {
             switch(response.event) {
                 case "stdoutData":
@@ -53,14 +47,9 @@ function installPppwn() {
 }
 
 function runPppwn() {
-    var runCmd = 
-        `cd /media/internal/downloads/webOS-PPPwn &&
-         chmod +x ./pppwn &&
-         ./pppwn -i eth0 --fw 1100 -s1 stage1.bin -s2 stage2.bin -t 60`;
-
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
-        parameters: {"command": runCmd},
+        parameters: {"command": "cd /media/internal/downloads/webOS-PPPwn && chmod +x ./pppwn && ./pppwn -i eth0 --fw 1100 -s1 stage1.bin -s2 stage2.bin -t 60"},
         onSuccess: function (response) {
             switch(response.event) {
                 case "stdoutData":
