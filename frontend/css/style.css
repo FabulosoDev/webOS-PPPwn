@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Courier New';
-    src: url('assets/courier_new.ttf');
+    src: url('../assets/courier_new.ttf');
 }
 
 * {
