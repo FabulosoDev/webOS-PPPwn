@@ -1,6 +1,6 @@
 {
   "name": "dev.fabuloso.webospppwn",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PPPwn for webOS TVs - PlayStation 4 PPPoE RCE",
   "scripts": {
     "check": "ares-package --check",
