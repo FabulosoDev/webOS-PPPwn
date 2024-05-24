@@ -4,17 +4,12 @@ function terminalLog(content) {
         var newInput = document.createElement('span');
         newInput.setAttribute('class', 'terminal-line');
         newInput.textContent = line;
-        if (!terminal.firstChild) {
+        if (!terminal.firstChild || line.slice(-1) == '\n') {
             terminal.appendChild(newInput);
-        } else if (line.slice(-1) == '\n') {
-            terminal.insertBefore(newInput, terminal.firstChild);
         } else {
-            terminal.replaceChild(newInput, terminal.firstChild);
+            terminal.replaceChild(newInput, terminal.lastChild);
         }
-        //terminal.scrollTo({
-        //    top: terminal.scrollHeight,
-        //    behavior: 'smooth'
-        //});
+        terminal.scrollTop = terminal.scrollHeight
     }
     var lf = content.indexOf("\n");
     if (lf > -1 && lf < content.length -1) {
