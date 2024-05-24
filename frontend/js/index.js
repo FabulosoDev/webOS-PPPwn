@@ -27,14 +27,10 @@ function terminalLog(content) {
 function installPppwn() {
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
-        parameters: {"command": "mkdir -p /media/internal/downloads/webOS-PPPwn && curl -L -o /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 && curl -L -o /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin && curl -L -o /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin"},
+        parameters: {"command": "mkdir -p /media/internal/downloads/webOS-PPPwn && curl -Lo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 && curl -Lo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin && curl -Lo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin"},
         onSuccess: function (response) {
-            switch(response.event) {
-                case "stdoutData":
-                    terminalLog(response.stdoutString);
-                    console.log(response.stdoutString);
-                    break;
-            }            
+            terminalLog(response);
+            console.log(response);
         },
         onFailure: function (error) {
             terminalLog(error);
