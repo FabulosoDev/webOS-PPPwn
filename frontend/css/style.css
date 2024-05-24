@@ -64,11 +64,13 @@ body {
     position: relative;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    overflow-x: hidden;
     overflow-y: scroll;
 }
 
 .terminal-line {
     display: block;
+    word-wrap: break-word;
     font-family: 'Courier New', Courier, monospace;
     color: #eee;
     font-size: .75em;
@@ -79,7 +81,6 @@ body {
     content: '>';
     font-weight: bold;
     margin-right: 0.5em;
-    margin-top: 0.2em;
     color: #555;
     display: inline-block;
     vertical-align: middle;
