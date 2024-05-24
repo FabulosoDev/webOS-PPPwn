@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Courier New';
+    src: url('assets/courier_new.ttf');
+}
+
 * {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
