@@ -1,13 +1,15 @@
 function terminalLog(content) {
+    var wasReplaceChild = false;
     function addChild(line) {
         var terminal = document.querySelector('#terminal');
         var newInput = document.createElement('span');
         newInput.setAttribute('class', 'terminal-line');
         newInput.textContent = line;
-        if (!terminal.firstChild || line.slice(-1) == '\n') {
+        if (!wasReplaceChild && (!terminal.firstChild || line.slice(-1) == '\n')) {
             terminal.appendChild(newInput);
         } else {
             terminal.replaceChild(newInput, terminal.lastChild);
+            was Replace Child = true;
         }
         terminal.scrollTop = terminal.scrollHeight
     }
