@@ -27,7 +27,7 @@ function terminalLog(content) {
 function installPppwn() {
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
-        parameters: {"command": 'echo "Downloading..." && mkdir -p /media/internal/downloads/webOS-PPPwn && curl -#Lo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 && curl -#Lo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin && curl -#Lo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin'},
+        parameters: {"command": 'echo "Installing...\n" && mkdir -p /media/internal/downloads/webOS-PPPwn && curl -vLo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/PPLGPwn/raw/main/pppwn_armv7 && curl -vLo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage1/1100/stage1.bin && curl -vLo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/PPLGPwn/raw/main/stage2/1100/stage2.bin && echo "Installation complete."'},
         onSuccess: function (response) {
             switch(response.event) {
                 case "stdoutData":
