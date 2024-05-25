@@ -32,9 +32,15 @@ jobs:
           rm -rf ./build/*
           mkdir ./build
 
+      - name: Fetch metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          tags: type=semver,pattern={{version}}
+
       - name: Update package version
         if: ${{ github.event_name == 'release' }}
-        run: npm version ${{ github.ref_name }} --no-git-tag-version --allow-same-version
+        run: npm version ${{ steps.meta.outputs.tags[0] }} --no-git-tag-version --allow-same-version
 
       - name: Sync version in appinfo.json with package.json
         if: ${{ github.event_name == 'release' }}
