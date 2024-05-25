@@ -30,11 +30,12 @@ jobs:
           rm -rf ./build/*
           mkdir ./build
 
-#      - name: Update package version
-#        if: ${{ github.event_name == 'release' }}
-#        run: npm version ${{ github.ref_name }}
+      - name: Update package version
+        if: ${{ github.event_name == 'release' }}
+        run: npm version ${{ github.ref_name }} --no-git-tag-version
 
       - name: Sync version in appinfo.json with package.json
+        if: ${{ github.event_name == 'release' }}
         run: node tools/sync-version.js
 
       - name: Build package
