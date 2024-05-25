@@ -40,7 +40,7 @@ jobs:
 
       - name: Update package version
         if: ${{ github.event_name == 'release' }}
-        run: npm version ${{ steps.meta.outputs.tags[0] }} --no-git-tag-version --allow-same-version
+        run: npm version ${{ steps.meta.outputs.tags.0 }} --no-git-tag-version --allow-same-version
 
       - name: Sync version in appinfo.json with package.json
         if: ${{ github.event_name == 'release' }}
