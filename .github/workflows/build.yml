@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 14.x
-          cache: npm
           
       - name: Install ares-cli globally
         run: npm install -g @webosose/ares-cli
