@@ -2,6 +2,8 @@ name: Build
 
 on:
   push:
+    branches:
+      - '**'
     tags-ignore:
       - '**'
   workflow_dispatch:
@@ -20,7 +22,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 14.x
-
+          cache: npm
+          
       - name: Install ares-cli globally
         run: npm install -g @webosose/ares-cli
 
@@ -32,9 +35,15 @@ jobs:
           rm -rf ./build/*
           mkdir ./build
 
+      - name: Fetch metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          tags: type=semver,pattern={{version}}
+
       - name: Update package version
         if: ${{ github.event_name == 'release' }}
-        run: npm version ${{ github.ref_name }} --no-git-tag-version --allow-same-version
+        run: npm version ${{ steps.meta.outputs.version }} --no-git-tag-version --allow-same-version
 
       - name: Sync version in appinfo.json with package.json
         if: ${{ github.event_name == 'release' }}
