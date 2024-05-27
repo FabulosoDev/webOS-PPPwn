@@ -34,6 +34,14 @@ body {
     color: #0f0
 }
 
+.logo {
+    width: 100%;
+}
+
+.logo img {
+    max-width: 25%;
+}
+
 .author {
     font-family: 'Courier New', Courier, monospace;
     color: #fff
@@ -84,6 +92,11 @@ body {
     color: #555;
     display: inline-block;
     vertical-align: middle;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
 }
 
 .footer {
