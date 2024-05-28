@@ -28,7 +28,7 @@ body {
 .logo {
     font-size: .55em;
     font-family: 'Courier New', Courier, monospace;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 1.5rem 0;
     text-align: center;
     white-space: pre;
     color: #0f0
@@ -67,8 +67,8 @@ body {
 .terminal {
     height: 100%;
     background: #000;
-    margin: 1.5rem 1.5rem 0;
-    padding: .5rem 1.25rem;
+    margin: 1.5rem 1.5rem 0 1.5rem;
+    padding: .5rem 1.25rem .5rem 1.25rem;
     position: relative;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -88,7 +88,7 @@ body {
 .terminal-line:before {
     content: '>';
     font-weight: bold;
-    margin-right: 0.5em;
+    margin-right: 0.5rem;
     color: #555;
     display: inline-block;
     vertical-align: middle;
@@ -101,7 +101,7 @@ body {
 
 .footer {
     font-size: .75em;
-    padding: .5rem 1.25rem;
+    padding: .5rem 1.25rem .5rem 1.25rem;
     text-align: center;
 }
 
