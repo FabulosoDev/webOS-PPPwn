@@ -1,7 +1,9 @@
+var cpuArch;
+
 var installPppwnScript = 
 'echo "Installing..."\n' +
 'mkdir -p /media/internal/downloads/webOS-PPPwn\n' +
-'curl -fsSLo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/pppwn_armv7\n' +
+'curl -fsSLo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/pppwn_' + cpuArch + '\n' +
 'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/stage1/1100/stage1.bin\n' +
 'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/stage2/1100/stage2.bin\n' +
 'echo "Installation complete."';
@@ -37,38 +39,79 @@ function terminalLog(content) {
     }
 }
 
-function installPppwn() {
+function init() {
+    webOS.fetchAppInfo(function (info) {
+        if (info) {
+            document.getElementById("version").innerHTML = info.version;
+        } else {
+            console.error('Error occurs while getting appinfo.json.');
+        }
+    });
+
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
-        method: "spawn",
-        parameters: {"command": installPppwnScript},
+        method: "exec",
+        parameters: {"command": "uname -m"},
         onSuccess: function (response) {
-            switch(response.event) {
-                case "stdoutData":
-                    terminalLog(response.stdoutString);
-                    console.log(response.stdoutString);
+            terminalLog(response.stdoutString);
+            console.log(response.stdoutString);
+
+            switch (response.stdoutString) {
+                case "armv7":
+                case "armv7l":
+                    cpuArch = "armv7";
                     break;
-                case "stderrData":
-                    terminalLog(response.stderrString);
-                    console.log(response.stderrString);
+                case "aarch64":
+                    cpuArch = "aarch64";
+                    break;            
+                default:
+                    cpuArch = "armv7";
                     break;
-                case "close":
-                    terminalLog("CloseCode: " + response.closeCode);
-                    console.log("CloseCode: " + response.closeCode);
-                    break;
-                case "exit":
-                    terminalLog("ExitCode: " + response.exitCode);
-                    console.log("ExitCode: " + response.exitCode);
-                    break;
-            }
+            }    
+            document.getElementById("cpuArch").innerHTML = cpuArch;
         },
         onFailure: function (error) {
             terminalLog(error);
             console.log(error);
-            return;
-        },
-        subscribe: true,
-        resubscribe: true
+        }
     });
+}
+
+function installPppwn() {
+    if (!!cpuArch) {
+        webOS.service.request("luna://org.webosbrew.hbchannel.service", {
+            method: "spawn",
+            parameters: {"command": installPppwnScript},
+            onSuccess: function (response) {
+                switch(response.event) {
+                    case "stdoutData":
+                        terminalLog(response.stdoutString);
+                        console.log(response.stdoutString);
+                        break;
+                    case "stderrData":
+                        terminalLog(response.stderrString);
+                        console.log(response.stderrString);
+                        break;
+                    case "close":
+                        terminalLog("CloseCode: " + response.closeCode);
+                        console.log("CloseCode: " + response.closeCode);
+                        break;
+                    case "exit":
+                        terminalLog("ExitCode: " + response.exitCode);
+                        console.log("ExitCode: " + response.exitCode);
+                        break;
+                }
+            },
+            onFailure: function (error) {
+                terminalLog(error);
+                console.log(error);
+            },
+            subscribe: true,
+            resubscribe: true
+        });
+    } else {
+        terminalLog("Unknown CPU architecture!");
+        console.log("Unknown CPU architecture!");
+    }
 }
 
 function runPppwn() {
@@ -98,7 +141,6 @@ function runPppwn() {
         onFailure: function (error) {
             terminalLog(error);
             console.log(error);
-            return;
         },
         subscribe: true,
         resubscribe: true
@@ -108,11 +150,3 @@ function runPppwn() {
 function clearLog() {
     document.querySelector('#terminal').innerHTML = '';
 }
-
-webOS.fetchAppInfo(function (info) {
-    if (info) {
-        document.getElementById("version").innerHTML = info.version;
-    } else {
-        console.error('Error occurs while getting appinfo.json.');
-    }
-});
