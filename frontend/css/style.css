@@ -49,6 +49,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .logo img {
@@ -62,9 +63,10 @@ body {
 }
 
 .button-container button {
-    font-size: 1em;
-    padding: 1rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
     background-color: #333;
     color: #fff;
 }
@@ -102,8 +104,8 @@ body {
 .footer-container {
     display: flex;
     justify-content: space-around;
-    margin: 1.25rem 0;
-    margin-bottom: 2.5rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .footer {
