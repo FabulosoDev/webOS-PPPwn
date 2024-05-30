@@ -64,12 +64,11 @@ body {
 
 .button-container button {
     font-size: 1em;
-    line-height: normal;
     padding-top: 1rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     padding-right: 1rem;
     padding-left: 1rem;
-    outline: none;
+    outline-style: none;
     background-color: #333;
     color: #fff;
 }
