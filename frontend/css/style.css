@@ -64,8 +64,9 @@ body {
 
 .button-container button {
     font-size: 1em;
+    line-height: normal;
     padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
     padding-right: 1rem;
     padding-left: 1rem;
     outline: none;
