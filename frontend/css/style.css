@@ -18,44 +18,52 @@ html {
 body {
     width: 100%;
     font-size: 30px;
-    white-space: pre;
     background-color: #1e1e1e;
     color: #ffffff;
-    display: flex;
-    flex-direction: column;
 }
 
-.logo {
-    font-size: .55em;
-    font-family: 'Courier New', Courier, monospace;
-    padding: 1.5rem 0 1.5rem 0;
-    text-align: center;
-    white-space: pre;
-    color: #0f0
+.container {
+    position: absolute;
+    padding: 0 1.5rem;
+    height: 100%;
+    width: 100%;
+    display:-webkit-flex;
+    display:flex;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+    -webkit-flex-wrap: flex-direction;
+            flex-wrap: flex-direction;
+    -webkit-justify-content: center;
+            justify-content: center;
+    -webkit-align-items: center;
+            align-items: center;
+    -webkit-align-content: center;
+            align-content: center;
 }
 
-.logo {
+.container > div {
     width: 100%;
 }
 
-.logo img {
-    max-width: 25%;
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
 }
 
-.author {
-    font-family: 'Courier New', Courier, monospace;
-    color: #fff
+.logo img {
+    width: 25%;
 }
 
 .button-container {
     display: flex;
     justify-content: space-around;
+    margin: 1.25rem 0;
 }
 
 .button-container button {
     font-size: 1em;
     padding: 1rem;
-    margin: 0.2rem 0;
     background-color: #333;
     color: #fff;
 }
@@ -64,14 +72,10 @@ body {
     background-color: #555;
 }
 
-.terminal {
-    height: 100%;
+#terminal {
     background: #000;
-    margin: 1.5rem 1.5rem 0 1.5rem;
-    padding: .5rem 1.25rem .5rem 1.25rem;
-    position: relative;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+    height: 100%;
+    padding: .5rem 1.25rem;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -97,14 +101,10 @@ body {
 .footer-container {
     display: flex;
     justify-content: space-around;
+    margin: 1.25rem 0;
 }
 
 .footer {
     font-size: .75em;
-    padding: .5rem 1.25rem .5rem 1.25rem;
     text-align: center;
-}
-
-.layout-tv body::-webkit-scrollbar {
-    display: none;
 }
