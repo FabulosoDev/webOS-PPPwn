@@ -23,22 +23,11 @@ body {
 }
 
 .container {
-    position: absolute;
-    padding: 0 1.5rem;
     height: 100%;
     width: 100%;
-    display:-webkit-flex;
-    display:flex;
-    -webkit-flex-direction: column;
-            flex-direction: column;
-    -webkit-flex-wrap: flex-direction;
-            flex-wrap: flex-direction;
-    -webkit-justify-content: center;
-            justify-content: center;
-    -webkit-align-items: center;
-            align-items: center;
-    -webkit-align-content: center;
-            align-content: center;
+	padding: 0 1.25rem;
+	display: flex;
+	flex-direction: column;
 }
 
 .container > div {
@@ -48,8 +37,7 @@ body {
 .logo {
     display: flex;
     justify-content: center;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin: 1.25rem 0;
 }
 
 .logo img {
@@ -58,23 +46,27 @@ body {
 
 .button-container {
     display: flex;
-    justify-content: space-around;
-    margin: 1.25rem 0;
+	justify-content: space-between;
+	margin-bottom: 1.25rem;
 }
 
 .button-container button {
+	width: 30%;
     font-size: 1em;
-    padding-top: 1rem;
-    padding-bottom: 3rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    outline-style: none;
-    background-color: #333;
+    padding: 1rem;
+	padding-bottom: 3rem;
+    background: #333;
     color: #fff;
+	border: 0;
+	border-radius: .5rem;
 }
 
 .button-container button:hover {
-    background-color: #555;
+    background: #555;
+}
+
+.button-container button:focus {
+	background: #3cb784
 }
 
 #terminal {
@@ -105,9 +97,8 @@ body {
 
 .footer-container {
     display: flex;
-    justify-content: space-around;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
+    justify-content: space-between;
+	margin: 1.25rem 0;
 }
 
 .footer {
