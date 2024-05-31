@@ -40,7 +40,9 @@ function init() {
         parameters: {"command": "uname -m"},
         onSuccess: function (response) {
             console.log(response.stdoutString);
-            
+
+            document.getElementById("cpuArch").innerHTML = response.stdoutString;
+
             switch (response.stdoutString) {
                 case "armv7":
                 case "armv7l":
@@ -53,8 +55,6 @@ function init() {
                     cpuArch = "armv7";
                     break;
             }
-            
-            document.getElementById("cpuArch").innerHTML = cpuArch;
         },
         onFailure: function (error) {
             terminalLog(error);
