@@ -111,7 +111,7 @@ function runPppwn() {
     var runPppwnScript = 
         'cd /media/internal/downloads/webOS-PPPwn\n' +
         'chmod +x ./pppwn\n' +
-        './pppwn -i eth0 --fw 1100 --stage1 stage1.bin --stage2 stage2.bin';
+        './pppwn -i eth0 --fw 1100 -s1 stage1.bin -s2 stage2.bin -t 60';
 
     webOS.service.request("luna://org.webosbrew.hbchannel.service", {
         method: "spawn",
