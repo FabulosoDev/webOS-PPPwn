@@ -39,11 +39,11 @@ function init() {
         method: "exec",
         parameters: {"command": "uname -m"},
         onSuccess: function (response) {
-            console.log(response.stdoutString);
+            console.log(response.stdoutString.trim());
 
-            document.getElementById("cpuArch").innerHTML = response.stdoutString;
+            document.getElementById("cpuArch").innerHTML = response.stdoutString.trim();
 
-            switch (response.stdoutString) {
+            switch (response.stdoutString.trim()) {
                 case "armv7":
                 case "armv7l":
                     cpuArch = "armv7";
