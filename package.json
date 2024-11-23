@@ -1,0 +1,20 @@
+{
+  "name": "dev.fabuloso.webospppwn",
+  "version": "0.0.2",
+  "description": "PPPwn for webOS TVs - PlayStation 4 PPPoE RCE",
+  "scripts": {
+    "check": "ares-package --check",
+    "clean": "rm -rf build/",
+    "syncversion": "node tools/sync-version.js && git add frontend/appinfo.json",
+    "package": "ares-package --no-minify --outdir build/ frontend",
+    "deploy": "ares-install build/dev.fabuloso.webospppwn_${npm_package_version}_all.ipk",
+    "launch": "ares-launch dev.fabuloso.webospppwn",
+    "manifest": "node tools/gen-manifest.js build/dev.fabuloso.webospppwn.manifest.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FabulosoDev",
+  "license": "None",
+  "devDependencies": {
+    "@webosose/ares-cli": "^2.4.0"
+  }
+}

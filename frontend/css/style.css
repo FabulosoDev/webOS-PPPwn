@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Courier New';
+    src: url('../assets/courier_new.ttf');
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    font-size: 30px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+	padding: 0 1.25rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.container > div {
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin: 1.25rem 0;
+}
+
+.logo img {
+    width: 25%;
+}
+
+.button-container {
+    display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.25rem;
+}
+
+.button-container button {
+	width: 30%;
+    font-size: 1em;
+    padding: 1rem;
+	padding-bottom: 3rem;
+    background: #333;
+    color: #fff;
+	border: 0;
+	border-radius: .5rem;
+}
+
+.button-container button:hover {
+    background: #555;
+}
+
+.button-container button:focus {
+	background: #3cb784
+}
+
+#terminal {
+    background: #000;
+    height: 100%;
+    padding: .5rem 1.25rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.terminal-line {
+    display: block;
+    word-wrap: break-word;
+    font-family: 'Courier New', Courier, monospace;
+    color: #eee;
+    font-size: .75em;
+    line-height: 1.5;
+}
+
+.terminal-line:before {
+    content: '>';
+    font-weight: bold;
+    margin-right: 0.5rem;
+    color: #555;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+	margin: 1.25rem 0;
+}
+
+.footer {
+    font-size: .75em;
+    text-align: center;
+}

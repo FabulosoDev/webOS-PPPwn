@@ -1,0 +1,16 @@
+{
+    "appDescription": "PPPwn for webOS TVs - PlayStation 4 PPPoE RCE",
+    "icon": "assets/icon-80.png",
+    "main": "index.html",
+    "bgImage": "assets/splash.png",
+    "title": "webOS-PPPwn",
+    "type": "web",
+    "version": "0.0.1",
+    "splashBackground": "assets/splash.png",
+    "bgColor": "#000000",
+    "vendor": "FabulosoDev",
+    "largeIcon": "assets/icon-130.png",
+    "iconColor": "#000000",
+    "id": "dev.fabuloso.webospppwn",
+    "disableBackHistoryAPI": true
+}

@@ -1,0 +1,66 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - '**'
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14.x
+          
+      - name: Install ares-cli globally
+        run: npm install -g @webosose/ares-cli
+
+      - name: Check packaging
+        run: ares-package --check
+
+      - name: Prepare environment
+        run: |
+          rm -rf ./build/*
+          mkdir ./build
+
+      - name: Fetch metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          tags: type=semver,pattern={{version}}
+
+      - name: Update package version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: npm version ${{ steps.meta.outputs.version }} --no-git-tag-version --allow-same-version
+
+      - name: Sync version in appinfo.json with package.json
+        if: startsWith(github.ref, 'refs/tags/')
+        run: node tools/sync-version.js
+
+      - name: Build package
+        run: ares-package --no-minify --outdir build/ frontend
+
+      - name: Create manifest for distribution
+        run: node tools/gen-manifest.js build/dev.fabuloso.webospppwn.manifest.json
+
+      - name: Upload CI artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: webos-pppwn
+          path: ${{ github.workspace }}/build/*
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
+          prerelease: true
+          files: 'build/*'
