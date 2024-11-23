@@ -67,9 +67,9 @@ function installPppwn() {
     var installPppwnScript = 
         'echo "Installing..."\n' +
         'mkdir -p /media/internal/downloads/webOS-PPPwn\n' +
-        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/pppwn_' + cpuArch + '\n' +
-        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/stage1/1100/stage1.bin\n' +
-        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/develop/pppwn/stage2/1100/stage2.bin\n' +
+        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/pppwn https://github.com/FabulosoDev/webOS-PPPwn/raw/master/pppwn/pppwn_' + cpuArch + '\n' +
+        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage1.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/master/pppwn/stage1/1100/stage1.bin\n' +
+        'curl -fsSLo /media/internal/downloads/webOS-PPPwn/stage2.bin https://github.com/FabulosoDev/webOS-PPPwn/raw/master/pppwn/stage2/1100/stage2.bin\n' +
         'echo "Installation complete."\n';
     
     if (!!cpuArch) {
