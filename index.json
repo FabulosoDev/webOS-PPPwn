@@ -9,8 +9,10 @@
         {
             "id": "dev.fabuloso.webospppwn",
             "title": "webOS-PPPwn",
-            "iconUri": "https://raw.githubusercontent.com/FabulosoDev/webOS-PPPwn/refs/heads/master/frontend/assets/icon-130.png",
-            "manifestUrl": "https://github.com/FabulosoDev/webOS-PPPwn/releases/latest/download/dev.fabuloso.webospppwn.manifest.json"
+            "iconUri": "icon-130.png",
+            "manifestUrl": "https://github.com/FabulosoDev/webOS-PPPwn/releases/latest/download/dev.fabuloso.webospppwn.manifest.json",
+            "shortDescription": "webOS-PPPwn",
+            "fullDescriptionUrl": "description.html"
         }
     ]
 }
